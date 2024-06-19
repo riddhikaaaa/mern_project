@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./admin:/app
+    environment:
+      - NODE_ENV=development
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4001"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5001"
+    volumes:
+      - ./backend:/app
+    environment:
+      - NODE_ENV=development
+
